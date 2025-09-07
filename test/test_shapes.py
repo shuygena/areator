@@ -64,7 +64,9 @@ def test_incorrect_triangle(a, b, c, expected_exception):
 def test_shape_factory():
     some_shape = ShapeFactory.create_shape(5)
     assert isinstance(some_shape, Circle), "Unexpected shape"
+    assert some_shape.area() == Circle(5).area(), "Unexpected area"
     some_shape = ShapeFactory.create_shape(3, 4, 5)
     assert isinstance(some_shape, Triangle), "Unexpected shape"
+    assert some_shape.area() == Triangle(3, 4, 5).area(), "Unexpected area"
     with pytest.raises(ValueError):
         ShapeFactory.create_shape(2, 3)
